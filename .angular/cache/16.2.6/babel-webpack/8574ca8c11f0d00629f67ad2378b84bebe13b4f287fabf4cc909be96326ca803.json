@@ -1,1 +1,0 @@
-{"ast":null,"code":"export * from './intersect';","map":{"version":3,"names":[],"sources":["C:/Internship/FoodShopUI/node_modules/@progress/kendo-draggable-common/dist/es2015/algorithms/index.js"],"sourcesContent":["export * from './intersect';\n"],"mappings":"AAAA,cAAc,aAAa"},"metadata":{},"sourceType":"module","externalDependencies":[]}
