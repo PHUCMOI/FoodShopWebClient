@@ -1,0 +1,42 @@
+.quantity-controls {
+    display: flex; /* Use flexbox to align items horizontally */
+    align-items: center; /* Vertically center the items */
+}
+
+.quantity-controls mat-icon {
+    cursor: pointer; /* Change the cursor to a pointer on hover for better UX */
+    margin: 0 5px; /* Add spacing around the icons */
+}
+
+.quantity-controls p {
+    margin: 0 10px; /* Add spacing around the quantity number */
+}
+
+.cart-container {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.text-danger {
+  color: red;
+}
+
+.cart-product {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+.cart-total {
+  margin-top: 20px;
+}
+
+#message {
+    width: 100%; /* Set the width to 100% to make it expand to the container's width */
+    /* Add other styles as needed */
+  }

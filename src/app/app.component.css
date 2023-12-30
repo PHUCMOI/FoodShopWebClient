@@ -1,0 +1,8 @@
+app-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100; /* You can adjust the z-index as needed to control stacking order */
+    /* Add any other styling you need for your navbar */
+  }

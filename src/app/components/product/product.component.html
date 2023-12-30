@@ -1,0 +1,94 @@
+<div class="row" style="margin-top: 10px;">
+  <div class="col-md-2 d-none d-md-block data-bs-toggle">
+    <app-treeview>(filterEvent)="onFilterChange($event)"></app-treeview>
+  </div>
+  <div class="col-md-10">
+    <div class="container">
+      <div *ngIf="isAdmin === true">
+        <button (click)="onShowAddPopup()">Add New</button>
+        <button (click)="onShowCategoryPopUp()">Add New Category</button>
+      </div>
+      <div class="row">
+        <div *ngFor="let data of gridData" class="col-lg-4 col-md-6 col-sm-12 col-12">
+          <div class="product-card">
+            <a [routerLink]="['/detail', data.productId]">
+              <img src="{{data.imgUrl}}" alt="Product Image" class="card-img-top product-image">
+              <div class="card-body">
+                <h5 class="card-title">{{data.productName}}</h5>
+                <p class="card-description">{{data.description}}</p>
+                <p class="card-price">Price: ${{data.price}}</p>
+              </div>
+            </a>
+            
+            <div class="button-container">
+              <div class="button-buy-delete" *ngIf="isAdmin !== true">
+                <button (click)="onBuyNow(data.productId)" class="button-buy">Buy Now</button>
+                <button (click)="onAddToCart(data.productId)" class="button-cart">
+                  <mat-icon class="icon">add_shopping_cart</mat-icon>
+                  <span class="text">Add to Cart</span>
+                </button>
+              </div>
+              <div class="button-delete" *ngIf="isAdmin === true">
+                <button (click)="onDelete(data.productId)" class="button-delete">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showDeletePopup" class="popup-container">
+    <div class="popup">
+      <form [formGroup]="deleteProduct" (ngSubmit)="onSubmitDelete()">
+        <p>Do you want delete this product?</p>
+        <div>
+          <button style="background-color: red;" type="submit">Delete</button>
+          <button (click)="closePopup()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="showAddPopup" class="popup-container">
+    <div class="popup">
+      <form [formGroup]="addProduct" (ngSubmit)="onSubmitAdd()" class="popup-form">
+        <h2>Add Product</h2>
+  
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" formControlName="productName" />
+  
+        <label for="category">Category:</label>
+        <select id="category" formControlName="category">
+          <option value="">Select a category</option>
+          <option *ngFor="let category of categories" [ngValue]="category.categoryName">{{ category.categoryName }}</option>
+        </select>
+  
+        <label for="description">Description:</label>
+        <input type="text" id="description" formControlName="description" />
+  
+        <label for="price">Price:</label>
+        <input type="number" id="price" formControlName="price" />
+  
+        <label for="image">Upload Image:</label>
+        <input type="file" (change)="onFileSelected($event)" id="image" accept="image/*" />
+        
+        <div class="button-container">
+          <button type="submit" class="submit-button">Submit</button>
+          <button type="button" (click)="closePopup()" class="cancel-button">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <div *ngIf="showCategoryPopUp" class="popup-container">
+    <div class="popup">
+      <form [formGroup]="addCategory" (ngSubmit)="onAddCategory()">
+        <label for="categoryName">Cetegory Name:</label>
+        <input type="text" id="categoryName" formControlName="categoryName" />
+        <div>
+          <button style="background-color: red;" type="submit">Submit</button>
+          <button (click)="closePopup()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>

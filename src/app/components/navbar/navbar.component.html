@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" *ngIf="isLoggedIn === true">
+  <div class="container-fluid" style="margin-top: -10px; margin-bottom: -20px;">
+    <a class="navbar-brand" [routerLink]="['/product']">FoodShop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ng-container *ngIf="isAdmin === true">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" [routerLink]="['/dashboard']">Dashboard</a>
+          </li>
+        </ng-container>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/product']">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/reservation']">Reservation</a>
+        </li>
+        <ng-container *ngIf="isAdmin === true">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/user']">User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/order']">Order</a>
+          </li>
+        </ng-container>
+      </ul>
+
+      <div class="search-input-container">
+        <form class="example-form">
+          <mat-form-field class="example-full-width" style="width: 600px;">
+            <mat-label>Search</mat-label>
+            <input style="width: 570px;" type="text" matInput [formControl]="myControl" [matAutocomplete]="auto"
+              class="search-input" [ngModel]="inputValue" #searchInput (keyup)="searchProduct($event)"
+              (ngModelChange)="onInputChange($event)" placeholder="Search Products">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">{{ option }}</mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <button class="search-button" (click)="submitSearch(searchInput.value)">Search</button>
+        </form>
+      </div>
+
+      <button class="shopping-cart-button" [routerLink]="['/cart']">
+        <mat-icon class="shopping-cart-icon">shopping_cart</mat-icon>
+        <span class="button-text">Cart</span>
+        <span class="cart-count">{{ cartCount }}</span>
+      </button>
+
+      <button (click)="onLogout()" class="btn btn-danger ms-1" *ngIf="isLoggedIn">Logout</button>
+    </div>
+  </div>
+</nav>

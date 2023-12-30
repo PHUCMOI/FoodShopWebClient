@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.gridster-container {
+  flex: 1;
+}
+
+.clicked {
+  background-color: dimgrey;
+}
+
+.gridster-item {
+  position: relative;
+}
+
+.table-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%; /* Optionally set a maximum width */
+  max-height: 100%; /* Optionally set a maximum height */
+}

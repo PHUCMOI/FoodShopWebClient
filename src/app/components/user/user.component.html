@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-md-12">
+        <kendo-grid [kendoGridBinding]="gridUser" [groupable]="true" [filterable]="true"
+             #grid [pageable]="true" [sortable]="true"
+            (cancel)="cancelHandler($event)" (save)="saveHandler($event)" (edit)="editHandler($event)"
+            (remove)="removeHandler($event)" (add)="addHandler($event)" [navigable]="true">
+            <ng-template kendoGridToolbarTemplate>
+                <button kendoGridAddCommand>Add new</button>
+            </ng-template>
+            <kendo-grid-column field="userName" title="User Name"></kendo-grid-column>
+            <kendo-grid-column field="role" title="Role" format="{0:c}"></kendo-grid-column>
+            <kendo-grid-column field="phoneNumber" title="Phone Number"></kendo-grid-column>
+            <kendo-grid-column field="status" title="Status"></kendo-grid-column>
+            <kendo-grid-command-column title="command" [width]="220">
+                <ng-template kendoGridCellTemplate let-isNew="isNew">
+                    <button kendoGridEditCommand [primary]="true">Edit</button>
+                    <button kendoGridRemoveCommand>Remove</button>
+                    <button kendoGridSaveCommand [disabled]="formGroup && formGroup.invalid">{{ isNew ? 'Add' : 'Update'}}</button>
+                    <button kendoGridCancelCommand>{{ isNew ? 'Discard changes' : 'Cancel' }}</button>
+                </ng-template>
+            </kendo-grid-command-column>
+        </kendo-grid>
+    </div>
+</div>
+
+<!-- Add New User Popup -->
+<div *ngIf="showAddPopup" class="popup-container">
+    <div class="popup">
+      <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()" class="popup-form">
+        <h2>Add User</h2>
+  
+        <div class="form-group">
+          <label for="username">User Name:</label>
+          <input type="text" id="username" formControlName="username" class="form-control" />
+        </div>
+  
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" formControlName="password" class="form-control" />
+        </div>
+  
+        <div class="form-group">
+          <label for="role">Role:</label>
+          <select id="role" formControlName="role" class="form-control">
+            <option value="Admin">Admin</option>
+            <option value="Customer">Customer</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="text" id="phoneNumber" formControlName="phoneNumber" class="form-control" />
+        </div>
+  
+        <div class="form-group">
+          <label for="status">Status:</label>
+          <input type="text" id="status" formControlName="status" class="form-control" />
+        </div>
+  
+        <div class="button-container">
+          <button type="submit" class="submit-button">Submit</button>
+          <button type="button" (click)="closePopup()" class="cancel-button">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+
+<div *ngIf="showDeletePopup" class="popup-container">
+    <div class="popup">
+      <form [formGroup]="deleteUser" (ngSubmit)="onSubmitDelete()">
+        <p>Do you want delete this product?</p>
+        <div>
+          <button class="cancel-button" type="submit">Delete</button>
+          <button (click)="closePopup()" class="submit-delete">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>

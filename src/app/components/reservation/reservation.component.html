@@ -1,0 +1,59 @@
+<div>
+  <mat-form-field>
+    <mat-label>Restaurant</mat-label>
+    <mat-select [(value)]="selectedRestaurant" (selectionChange)="onRestaurantSelectionChange()">
+      <mat-option *ngFor="let restaurant of restaurantList" [value]="restaurant.restaurantName">{{
+        restaurant.restaurantName }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>People</mat-label>
+    <mat-select [(value)]="selectedPeople" (selectionChange)="onPeopleSelectionChange()">
+      <mat-option [value]="peopleOptions.None">None</mat-option>
+      <mat-option [value]="peopleOptions.LessThan2">< 2 People</mat-option>
+      <mat-option [value]="peopleOptions.ThreeToFour">3-4 People</mat-option>
+      <mat-option [value]="peopleOptions.MoreThan4">> 5 People</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+
+
+  <mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" [min]="minDate" [(ngModel)]="selectedDate"
+      (ngModelChange)="onDateChange($event)">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Time</mat-label>
+    <mat-select [(value)]="selectedTime">
+      <mat-option *ngFor="let time of timeList" [value]="time.time" [disabled]="!time.available">{{ time.time
+        }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <button (click)="getRestaurantMap()" mat-raised-button color="accent">Find</button>
+  <button *ngIf="!isAdmin" (click)="makeReservation()" mat-raised-button color="accent">Make Reservation</button>
+</div>
+<div *ngIf="isSelectTable" class="gridster-container">
+  <gridster [options]="options">
+    <gridster-item [item]="item" *ngFor="let item of dashboard" (click)="itemClick(item)"
+      [ngClass]=" {'clicked': (item === selectedItem || item['available']) && !this.isAdmin}">
+
+      <img [src]="getTableSizeImage(item)" alt="Table Image" class="table-image">     
+
+      <div *ngIf="isAdmin" class="button-holder">
+        <button mat-mini-fab (mousedown)="removeItem($event, item)" (touchstart)="removeItem($event, item)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </gridster-item>
+
+  </gridster>
+  <!-- <button *ngIf="isAdmin" (click)="saveMap()" mat-raised-button color="accent">Save</button> -->
+  <!-- <button *ngIf="isAdmin && this.dashboard.length === 0" (click)="createMap()" mat-raised-button color="accent">Create</button> -->
+</div>

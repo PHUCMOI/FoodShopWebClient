@@ -1,0 +1,1 @@
+{"ast":null,"code":"export * from './html/core';","map":{"version":3,"names":[],"sources":["C:/Internship/FoodShopUI/node_modules/@progress/kendo-drawing/dist/es2015/html.js"],"sourcesContent":["export * from './html/core';\n"],"mappings":"AAAA,cAAc,aAAa"},"metadata":{},"sourceType":"module","externalDependencies":[]}

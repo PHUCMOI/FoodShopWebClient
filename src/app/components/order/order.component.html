@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col-md-12">
+        <kendo-grid [kendoGridBinding]="girdOrder" [pageable]="true" [sortable]="true" [groupable]="true"
+            [filterable]="true" (edit)="editHandler($event)" (remove)="removeHandler($event)" [navigable]="true">
+            <kendo-grid-column field="userName" title="User Name" format="{0:c}"></kendo-grid-column>
+            <kendo-grid-column field="address" title="Address"></kendo-grid-column>
+            <kendo-grid-column field="totalPrice" title="Total Price"></kendo-grid-column>
+            <kendo-grid-column field="payMethod" title="Pay Method"></kendo-grid-column>
+            <kendo-grid-column field="status" title="Status"></kendo-grid-column>
+            <kendo-grid-column field="message" title="Message"></kendo-grid-column>
+            <kendo-grid-command-column title="command" [width]="220">
+                <ng-template kendoGridCellTemplate let-isNew="isNew">
+                    <button kendoGridEditCommand [primary]="true">Edit</button>
+                    <button kendoGridRemoveCommand>Remove</button>
+                    <button kendoGridSaveCommand [disabled]="formGroup && formGroup.invalid">{{ isNew ? 'Add' : 'Update'
+                        }}</button>
+                    <button kendoGridCancelCommand>{{ isNew ? 'Discard changes' : 'Cancel' }}</button>
+                </ng-template>
+            </kendo-grid-command-column>
+        </kendo-grid>
+    </div>
+</div>
+
+<div *ngIf="showUpdatePopUp" class="popup-container">
+    <div class="popup">
+      <form [formGroup]="updateOrder" (ngSubmit)="onUpdateOrder()" class="popup-form">
+        <h2>Update Order</h2>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="userName">User Name:</label>
+              <input type="text" id="userName" formControlName="userName" class="form-control" />
+            </div>
+  
+            <div class="form-group">
+              <label for="address">Address:</label>
+              <input type="text" id="address" formControlName="address" class="form-control" />
+            </div>
+  
+            <div class="form-group">
+              <label for="payMethod">Pay Method:</label>
+              <input type="text" id="payMethod" formControlName="payMethod" class="form-control" />
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="status">Status:</label>
+              <input type="text" id="status" formControlName="status" class="form-control" />
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message:</label>
+              <input type="text" id="message" formControlName="message" class="form-control" />
+            </div>
+  
+            <div class="form-group">
+              <label for="totalPrice">Total Price:</label>
+              <span id="totalPrice" class="form-control">{{ grandTotal }}</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody formArrayName="productList">
+              <tr *ngFor="let product of productlist.controls; let i = index" [formGroupName]="i">
+                <td>
+                  {{ product.get('productName')?.value }}
+                </td>
+                <td>
+                  <mat-icon (click)="onDecreaseQuantity(i)">remove_circle</mat-icon>
+                  {{ product.get('quantity')?.value }}
+                  <mat-icon (click)="onIncreaseQuantity(i)">add_circle</mat-icon>
+                </td>
+                <td>
+                  {{ product.get('price')?.value }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <div class="button-container">
+          <button type="submit" class="submit-button">Submit</button>
+          <button type="button" (click)="closePopup()" class="cancel-button">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  
+
+<div *ngIf="showDeletePopup" class="popup-container">
+    <div class="popup">
+      <form [formGroup]="deleteProduct" (ngSubmit)="onSubmitDelete()">
+        <p>Do you want delete this product?</p>
+        <div>
+            <button class="cancel-button" type="submit">Delete</button>
+            <button (click)="closePopup()" class="submit-delete">Cancel</button>
+          </div>
+      </form>
+    </div>
+  </div>

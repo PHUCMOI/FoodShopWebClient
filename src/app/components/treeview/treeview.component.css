@@ -1,0 +1,63 @@
+.filter {
+    margin-left: 15px;
+}
+
+.truncate-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px; /* Adjust the maximum width as needed */
+}
+.filter {
+    background: white;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+  }
+  
+  .filter h4 {
+    font-size: 18px;
+    margin: 0;
+    padding-bottom: 10px;
+  }
+  
+  .price-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .price-input {
+    width: 80px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+    margin: 0 10px;
+  }
+  
+  .price-separator {
+    font-size: 18px;
+    margin: 0 10px;
+  }
+  
+  .filter-button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .filter-button:hover {
+    background: #0056b3;
+  }
+  

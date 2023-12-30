@@ -1,0 +1,104 @@
+/* Add this CSS to your component's CSS file or your global styles.css file */
+.navbar {
+  background-color: #3498db; /* Background color for the navbar */
+  color: white; /* Text color */
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Ensure the navbar appears on top of other content */
+}
+
+.navbar a {
+  color: white; /* Link text color */
+  text-decoration: none; /* Remove underlines from links */
+  padding: 15px 20px;
+}
+
+.navbar a:hover {
+  background-color: #2980b9; /* Background color on hover */
+}
+
+.search-input-container {
+  margin-top: 15px;
+  margin-right: 50px;
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  margin-left: auto; /* Push search input to the right */
+}
+
+.search-input {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 200px;
+  margin: 0 auto; /* Center the input horizontally */
+}
+
+.search-button {
+  background-color: #2980b9;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.shopping-cart-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Media query for responsive design */
+@media (max-width: 767px) {
+  .navbar-toggler {
+    background-color: #2980b9; /* Toggle button background color for smaller screens */
+  }
+
+  .navbar-collapse {
+    background-color: #3498db; /* Background color for the mobile menu */
+    padding: 10px;
+    width: 100%;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .navbar-nav li {
+    margin-bottom: 10px;
+  }
+}
+
+.shopping-cart-button {
+  background-color: #ffffff;
+  color: #007bff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1px;
+  height: 37px;
+}
+
+.shopping-cart-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.button-text {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.cart-count {
+  font-size: 18px;
+  background-color: #ff5722;
+  color: white;
+  padding: 0px 6px;
+  border-radius: 20%;
+}

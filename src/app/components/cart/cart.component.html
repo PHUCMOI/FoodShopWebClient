@@ -1,0 +1,46 @@
+<div class="container" *ngIf="cartData.cart != null">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cartItem of cartData.cart; let i = index">
+              <td><img style="width: 120px;" [src]="cartData.product[i].imgUrl" alt="{{cartData.product[i].productName}}"></td>
+              <td>{{cartData.product[i].productName}}</td>
+              <td>{{cartData.product[i].price}}</td>
+              <td>{{cartItem.quantity}}</td>
+              <td>
+                <button (click)="removeItem(cartItem)" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cart-total">
+        <td><strong>Grand Total : ${{grandTotal}}</strong></td>       
+        <button [routerLink]="['/product']" class="btn btn-primary">Shop More</button>
+        <button [routerLink]="['/checkout']" class="btn btn-success">Checkout</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container" *ngIf="cartData.cart == null">
+    <div class="card">
+      <h5 class="card-title">My Cart</h5>
+    </div>
+    <div class="center">
+      <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="Empty Cart">
+      <h4>Your cart is empty!</h4>
+      <h6>Add items to it now</h6>
+      <button routerLink="/products" class="btn btn-primary">Shop Now</button>
+    </div>
+  </div>
+  

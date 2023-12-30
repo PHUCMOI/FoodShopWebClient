@@ -1,0 +1,262 @@
+/* General styles for the whole page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles for the treeview and price filter section */
+.col-md-2 {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.col-md-3 {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  max-width: 25%; /* To ensure consistent card sizes, limit the width */
+}
+
+.card-description {
+  margin: 5px 0;
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-box-orient: vertical;
+  text-wrap: balance;
+}
+
+
+.product-card {
+  position: relative;
+  flex: 1;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px 5px 0 0;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.card-description {
+  margin: 5px 0;
+  color: #555;
+  text-overflow: ellipsis;
+}
+
+.card-price {
+  font-size: 20;
+  color: #007bff;
+}
+
+.button-container {
+  bottom: 0;
+  right: 0;
+}
+
+.buttons-right-bottom {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.button-cart {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+}
+.button-buy-delete {
+  display: flex;
+  flex-direction: row-reverse; /* Place the buttons to the right */
+}
+.icon {
+  margin-right: 5px; /* Adjust the spacing between the icon and text as needed */
+}
+
+.button-cart:hover {
+  background-color: #0056b3;
+}
+
+.button-buy {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+}
+
+.button-delete {
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.button-cart:hover,
+.button-buy:hover {
+  background-color: #0056b3;
+}
+
+a {
+  color: black; /* Màu xanh */
+  text-decoration: none; /* Thêm gạch chân */
+}
+
+
+/* CSS for the popup */
+.popup {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Center the form elements within the popup */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style the form labels */
+form label {
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+/* Style the form inputs */
+form input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+
+button {
+  padding: 8px 15px;
+  background-color: #007bff; /* Blue color, change as needed */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button.cancel {
+  background-color: #ccc; /* Light gray for the cancel button */
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="file"] {
+  margin-top: 5px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.submit-button, .cancel-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button {
+  background: #4CAF50;
+  color: white;
+}
+
+.cancel-button {
+  background: #f44336;
+  color: white;
+}
+
+.cancel-button:hover, .submit-button:hover {
+  opacity: 0.8;
+}

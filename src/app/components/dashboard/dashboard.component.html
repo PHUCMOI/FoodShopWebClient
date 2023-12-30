@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Top Product Sellers</h5>
+            <ul class="list-group">
+              <li class="list-group-item text-dark" *ngFor="let product of dashboardData.topProductSellers">
+                {{ product.productName }} : {{ product.quantity }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Top Customers</h5>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let customer of dashboardData.topCustomer">
+                {{ customer.userName }} : {{ customer.totalOrderAmount }} vnd
+              </li>
+            </ul>
+          </div>
+        </div>
+  
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Total Income</h5>
+            <ul class="list-group">
+              <li class="list-group-item">
+                {{ dashboardData.totalIncome }} vnd
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-9">
+        <kendo-chart title="Category in store">
+          <kendo-chart-legend position="bottom"></kendo-chart-legend>
+          <kendo-chart-series>
+            <kendo-chart-series-item type="pie" [data]="pieData" field="value" categoryField="category"
+                [labels]="{ visible: true, content: labelContent }">
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+        </kendo-chart>
+  
+        <kendo-chart title="Number of products sold">
+          <kendo-chart-category-axis>
+            <kendo-chart-category-axis-item [categories]="categories">
+            </kendo-chart-category-axis-item>
+          </kendo-chart-category-axis>
+          <kendo-chart-series>
+            <kendo-chart-series-item type="column" [data]="counts">
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+        </kendo-chart>
+      </div>
+    </div>
+  </div>
+  

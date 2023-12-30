@@ -1,0 +1,18 @@
+<kendo-treeview [nodes]="treeViewData" [children]="children" [hasChildren]="hasChildren" textField="text"
+    kendoTreeViewCheckable [(checkedKeys)]="checkedKeys" [checkBy]="key" (checkedChange)="onCheckboxChange()">
+    <ng-template kendoTreeViewNodeTemplate let-dataItem>
+        <span>
+            <mat-icon class="k-icon">{{ dataItem.icon }}</mat-icon>
+            <span class="truncate-text">{{ dataItem.text }}</span>
+        </span>
+    </ng-template>
+</kendo-treeview>
+<div class="filter">
+    <h4>Filter by Price</h4>
+    <div class="price-inputs">
+        <input type="number" [(ngModel)]="minPrice" placeholder="Min Price" class="price-input">
+        <span class="price-separator">-</span>
+        <input type="number" [(ngModel)]="maxPrice" placeholder="Max Price" class="price-input">
+    </div>
+    <button (click)="filterByPrice()" class="filter-button">Filter</button>
+</div>
